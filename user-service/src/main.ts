@@ -1,0 +1,21 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+
+  // Global Validation Pipe
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, // بيشيل أي properties زيادة
+      forbidNonWhitelisted: true, // لو في properties زيادة، يرجع error
+      transform: true, // بيحوّل الـ types automatically
+    }),
+  );
+
+  const port = process.env.PORT || 3001;
+  await app.listen(port);
+  console.log(`🚀 User Service is running on: http://localhost:${port}`);
+}
+bootstrap();
