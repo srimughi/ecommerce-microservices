@@ -96,8 +96,10 @@ services:
       DB_USERNAME: order_admin
       DB_PASSWORD: ${ORDER_DB_PASSWORD}
       DB_NAME: order_db
+      RABBITMQ_URL: amqp://${RABBITMQ_USER}:${RABBITMQ_PASSWORD}@rabbitmq:5672
     depends_on:
       - order-db
+      - rabbitmq
 
 volumes:
   user-data:

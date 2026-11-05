@@ -15,7 +15,9 @@ import { Order } from '../entities/order.entity';
         name: 'PRODUCT_SERVICE',
         transport: Transport.RMQ,
         options: {
-          urls: ['amqp://admin:admin123@localhost:5672'],
+          urls: [
+            process.env.RABBITMQ_URL || 'amqp://localhost:5672',
+          ],
           queue: 'product_queue',
           queueOptions: {
             durable: true,
