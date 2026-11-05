@@ -1,6 +1,18 @@
+# Environment secrets
 .env
 .env.*
 !.env.example
+
+# Node.js
 node_modules/
+**/node_modules/
 dist/
+**/dist/
+
+# Test and coverage
 coverage/
+**/coverage/
+
+# Logs
+*.log
+npm-debug.log*
